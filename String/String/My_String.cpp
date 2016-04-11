@@ -32,7 +32,7 @@ unsigned int String::capacity() const{
 	return max_size;
 };
 
-const char* String::c_str() const{
+const char* String::get_str() const{
 	return the_string;
 };
 
@@ -42,9 +42,12 @@ bool String::empty() const{
 };
 
 bool String::operator==(const String& str) const{
-	if (strcmp(the_string, str.the_string)==0)
+	if (strcmp(the_string, str.the_string) == 0)
 		return true;
+	else
+		return false;
 };
+
 
 void String::operator=(const String &other_str){
 	int len = other_str.lenght()+1;
@@ -73,6 +76,4 @@ void String::operator+=(const String &other_str){
 	else{
 		printf("Delte/new not used.\n");
 	}
-	
-
 };
