@@ -1,5 +1,6 @@
 #include "My_String.h"
 #include <stdio.h>
+#include "Vector.h"
 
 int main(){
 	{
@@ -7,14 +8,27 @@ int main(){
  		String hello("Hello");
 		String hello2("HELLO");
 		String bye("Bye not to much stuff to do not ninu");
+
+		String command("Pick item from box");
 		//bye= hello;
 		//bye += hello;
-		if (hello == hello2)
-			printf("Yay son iguals");
+		hello.clear();
+		if (hello.empty())
+			printf("Yay empty");
 		else
-			printf("Not equal");
+			printf("Not empty");
 		
-	 	}
+		Vector<int> test;
 
+
+		Vector<String*> command_token = command.tokemize();
+
+
+		for (int i = 0; i < 4; i++)
+		{
+			printf("%s", command_token[i]->get_str());
+		}
+
+	 	}
 	return 0;
 }

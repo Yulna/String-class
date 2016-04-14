@@ -36,9 +36,12 @@ const char* String::get_str() const{
 	return the_string;
 };
 
+void String::clear(){
+	the_string[0] = '\0';
+};
+
 bool String::empty() const{
-	if (lenght())
-	return false;
+	return the_string[0] == '\0';
 };
 
 bool String::operator==(const String& str) const{
@@ -77,3 +80,23 @@ void String::operator+=(const String &other_str){
 		printf("Delte/new not used.\n");
 	}
 };
+
+
+//tokemize
+Vector<String*> String::tokemize(){
+	Vector<String*> ret;
+	char* context = nullptr;
+	int i = 0;
+
+	printf("Starting string tokenize");
+		ret.pushback(new String(strtok_s(the_string, " ", &context)));
+		i++;
+		printf("ended first token");
+		while (*context !='\0'){
+			i++;
+			ret.pushback(new String(strtok_s(NULL, " ", &context)));
+			printf("%i toekn done", i);
+		}
+	return ret;
+};
+

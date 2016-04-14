@@ -2,6 +2,7 @@
 #define __STRING_H__
 
 #include <string.h>
+#include "Vector.h"
 
 class String{
 private:
@@ -16,6 +17,7 @@ public:
 	unsigned int lenght() const;
 	unsigned int capacity() const;
 	const char* get_str() const;
+	void clear();
 	bool empty() const;
 	bool operator == (const String& str) const;
 	void operator=(const String &other_str);
@@ -24,6 +26,6 @@ public:
 	//operator + Operador constant el membres de la suma no es modifiquen
 	//char* operator+(const String &string_1, const String &string_2);
 
-
+	Vector<String*> tokemize();
 };
 #endif // !__STRING_H__
