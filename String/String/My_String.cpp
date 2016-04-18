@@ -2,6 +2,12 @@
 #include <string.h>
 #include <stdio.h>
 
+String::String(){
+	int len = 5;
+	the_string = new char[len + 1];
+	max_size = len + 1;
+};
+
 String::String(const char* str){
 	int len = strlen(str);
 	the_string = new char[len+1];
@@ -83,20 +89,36 @@ void String::operator+=(const String &other_str){
 
 
 //tokemize
-Vector<String*> String::tokemize(){
-	Vector<String*> ret;
+Vector<String> String::tokemize(){
+	Vector<String> ret;
 	char* context = nullptr;
 	int i = 0;
 
 	printf("Starting string tokenize");
-		ret.pushback(new String(strtok_s(the_string, " ", &context)));
+		ret.pushback(String(strtok_s(the_string, " ", &context)));
 		i++;
 		printf("ended first token");
 		while (*context !='\0'){
 			i++;
-			ret.pushback(new String(strtok_s(NULL, " ", &context)));
-			printf("%i toekn done", i);
+			ret.pushback(String(strtok_s(NULL, " ", &context)));
+			printf("%i token done", i);
 		}
 	return ret;
 };
 
+void String::tokenize(Vector<String> &tokens){
+	
+	char* context = nullptr;
+	int i = 0;
+
+	printf("\nStarting string tokenize");
+	tokens.pushback(String(strtok_s(the_string, " ", &context)));
+	i++;
+	printf("\nended first token");
+	while (*context != '\0'){
+		i++;
+		tokens.pushback(String(strtok_s(NULL, " ", &context)));
+		printf("\n%i token done", i);
+	}
+	
+};

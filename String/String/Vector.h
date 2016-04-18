@@ -1,6 +1,7 @@
 #ifndef __VECTOR_H__
 #define __VECTOR_H__
 #include<stdio.h>
+#include <assert.h>
 
 #define BASE_CAPACITY 5
 
@@ -8,7 +9,7 @@ template<class TYPE>
 
 class Vector{
 private:
-	TYPE *vector;
+	TYPE* vector;
 	unsigned int capacity = BASE_CAPACITY;
 	unsigned int num_elements=0;
 
@@ -62,18 +63,46 @@ public:
 	}
 
 
-	TYPE operator[](const int index){
+	TYPE operator[](unsigned int index) const {
+		assert(index <= num_elements)
+			return	vector[index];
+	}
+
+	TYPE operator[](unsigned int index){
+		assert(index <= num_elements);
 		return	vector[index];
 	}
 	
 
 	bool empty()const{
-		for (int i = 0; i < capacity; i++){
-			if (vector[i] != NULL){
-				return false;
-			}
+		if (num_elements == 0)
+			return true;
+		else
+			return false;
+	}
+	void clean(){
+		num_elements = 0;
+	}
+
+	unsigned int size(){
+		return num_elements;
+	}
+	unsigned int get_capacity(){
+		return capacity;
+	}
+
+	bool pop_back(TYPE& value){
+		if (num_elements > 0){
+			num_elements--;
+			value = vector[num_elements];
+			return true;
 		}
-		return true;
+		return false;
+	}
+
+	void shrink_to_fit(){
+		capacity = num_elements;
+		vector = new TYPE[capacity];
 	}
 
 

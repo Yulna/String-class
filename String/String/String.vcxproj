@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Memleaks.h" />
     <ClInclude Include="My_String.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>

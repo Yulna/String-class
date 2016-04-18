@@ -10,6 +10,7 @@ private:
 	unsigned int max_size;
 
 public:
+	String();
 	String(const char* str);
 	String(const String& str);
 	~String();
@@ -26,6 +27,7 @@ public:
 	//operator + Operador constant el membres de la suma no es modifiquen
 	//char* operator+(const String &string_1, const String &string_2);
 
-	Vector<String*> tokemize();
+	Vector<String> tokemize();
+	void tokenize(Vector<String> &tokens);
 };
 #endif // !__STRING_H__
